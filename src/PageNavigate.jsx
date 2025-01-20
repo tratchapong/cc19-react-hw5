@@ -4,9 +4,9 @@ function PageNavigate(props) {
   const {fetchProducts, total} = props
   const [inputPage, setInputPage] = useState(1)
 
-  useEffect(()=>{
-    fetchProducts(inputPage)
-  },[inputPage])
+  // useEffect(()=>{
+  //   fetchProducts(inputPage)
+  // },[inputPage])
 
   const hdlPageClick = (n) => {
     if(inputPage+n < 1) {
