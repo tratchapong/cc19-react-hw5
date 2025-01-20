@@ -1,18 +1,18 @@
-import {useEffect, useState} from 'react'
-
 function PageNavigate(props) {
-  const {fetchProducts, total} = props
-  const [inputPage, setInputPage] = useState(1)
+  const {currentPage,setCurrentPage, total} = props
 
-  // useEffect(()=>{
-  //   fetchProducts(inputPage)
-  // },[inputPage])
+  const hdlInputChange = e => {
+    if(isNaN(e.target.value) || e.target.value.trim() === '') {
+      return setCurrentPage(prv => prv)
+    }
+    setCurrentPage(e.target.value)
+  }
 
   const hdlPageClick = (n) => {
-    if(inputPage+n < 1) {
+    if(currentPage+n < 1) {
       return
     }
-    setInputPage(prv => +prv+n)
+    setCurrentPage(prv => +prv+n)
   }
 
   return (
@@ -21,13 +21,13 @@ function PageNavigate(props) {
         onClick={()=>hdlPageClick(-1)}
       >prev</button>
       <input className='w-10' 
-        value={inputPage}
-        onChange={e=>setInputPage(e.target.value)}
+        value={currentPage}
+        onChange={hdlInputChange}
       />
       <button className='border bg-pink-300 px-1'
         onClick={()=>hdlPageClick(+1)}
       >next</button>
-      <p className='ms-2'> { (inputPage-1)*10 + 1 }-{inputPage*10} of {total}</p>
+      <p className='ms-2'> { (currentPage-1)*10 + 1 }-{currentPage*10} of {total}</p>
     </div>
   )
 }

@@ -1,13 +1,13 @@
 import {useEffect, useState} from 'react'
 
 function SearchBar(props) {
-  const {fetchProducts} = props
+  const {setSearchText} = props
   const [inputText, setInputText] = useState('')
-  const [searchText, setSearchText] = useState('')
 
-  useEffect( ()=>{
-    fetchProducts(searchText)
-  },[searchText])
+
+  // useEffect( ()=>{
+  //   fetchProducts(searchText, 1)
+  // },[searchText])
 
   useEffect( ()=>{
     let timer1 = setTimeout( ()=>{
