@@ -1,8 +1,9 @@
 import React from 'react'
 
-function ProductItem() {
+function ProductItem(props) {
+  const {product} = props
   return (
-    <li>Product01</li>
+    <li>{product.id}, {product.title}, {product.price}</li>
   )
 }
 
